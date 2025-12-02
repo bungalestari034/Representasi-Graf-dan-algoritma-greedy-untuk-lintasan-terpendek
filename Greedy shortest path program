@@ -1,0 +1,55 @@
+# ================================
+#   GREEDY SHORTEST PATH PROGRAM
+# ================================
+
+# Contoh graf (silakan ubah sesuai data tugas)
+graph = {
+    'A': {'B': 4, 'C': 2},
+    'B': {'A': 4, 'D': 5, 'E': 10},
+    'C': {'A': 2, 'D': 3},
+    'D': {'B': 5, 'C': 3, 'E': 4},
+    'E': {'B': 10, 'D': 4}
+}
+
+print("=== PROGRAM GREEDY LINTASAN TERPENDEK ===")
+
+# Input dinamis
+start = input("Masukkan node awal : ").upper()
+goal = input("Masukkan node tujuan : ").upper()
+
+# Validasi
+if start not in graph or goal not in graph:
+    print("Node tidak ditemukan dalam graf!")
+    exit()
+
+# Greedy Algorithm
+current = start
+visited = {current}
+path = [current]
+total_cost = 0
+
+while current != goal:
+    neighbors = graph[current]
+
+    # Cari tetangga dengan jarak paling kecil yang belum dikunjungi
+    next_node = None
+    min_dist = float('inf')
+
+    for node, dist in neighbors.items():
+        if node not in visited and dist < min_dist:
+            next_node = node
+            min_dist = dist
+
+    if next_node is None:
+        print("Tidak ada lintasan tersedia!")
+        break
+
+    path.append(next_node)
+    visited.add(next_node)
+    total_cost += min_dist
+    current = next_node
+
+# Output hasil
+print("\n=== HASIL ===")
+print("Lintasan:", " -> ".join(path))
+print("Total jarak:", total_cost)
