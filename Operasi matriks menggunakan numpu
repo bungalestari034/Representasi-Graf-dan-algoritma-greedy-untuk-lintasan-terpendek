@@ -1,0 +1,30 @@
+#nomor 1
+import numpy as np
+nodes = ['P', 'Q', 'R', 'S', 'T']
+A = np.array([
+    [0, 5, 2, 0, 0],
+    [5, 0, 0, 1, 0],
+    [2, 0, 0 ,3, 4],
+    [0, 1, 3, 0, 6],
+    [0, 0, 4, 6, 0],
+])
+
+print(A)
+
+#nomor 2
+M1 = np.array([[1, 3, 2], [4, 1, 6]])
+M2 = np.array([[2, 1, 3], [0, 5, 2]])
+
+M_tambah = M1 + M2
+M_kurang = M1 - M2
+M1_transpose = M1.T
+M2_transpose = M2.T
+M_kali = np.dot(M1,M2_transpose)
+print(M_tambah)
+print(M_kurang)
+print(M1_transpose)
+print(M2_transpose)
+print(M_kali)
+# nomor 3
+degree = np.sum(A > 0, axis=1)
+print(degree)
